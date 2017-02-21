@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import PlayerList from '../components/PlayerList'
-import { fetchPlayerInfo } from '../actions'
+import { fetchTeamInfo } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -11,8 +11,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleSubmitTeam: (players) => {
-      players.map(player => dispatch(fetchPlayerInfo(player)))
-      //dispatch(fetchTeamInfo(players))
+      dispatch(fetchTeamInfo(players))
     }
   }
 }

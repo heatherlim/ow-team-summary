@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import fetch from 'isomorphic-fetch'
 
 export const addPlayer = (battletag) => {
@@ -22,29 +23,16 @@ function receivePlayerInfo(player, json) {
   }
 }
 
- function fetchTeamInfo(players) {
-  players.map(player => {
-    return dispatch => {
-      return fetch('http://localhost:4444/api/v3/u/' + player.battletag.replace("#", "-") + '/blob')
-        .then(response => response.json())
-        .then(json => dispatch(receivePlayerInfo(player, json)))
-    }
-  })
-  
-  //var parsedBattletag = player.battletag.replace("#", "-")
-  // return dispatch => {
-  //   return fetch('http://localhost:4444/api/v3/u/' + parsedBattletag + '/blob')
-  //     .then(response => response.json())
-  //     .then(json => dispatch(receivePlayerInfo(player, json)))
-  // }
-}
-
-export function fetchPlayerInfo(player) {
-  var parsedBattletag = player.battletag.replace("#", "-")
-  return dispatch => {
-    return fetch('http://localhost:4444/api/v3/u/' + parsedBattletag + '/blob')
-      .then(response => response.json())
-      .then(json => dispatch(receivePlayerInfo(player, json)))
+ export function fetchTeamInfo(players) {
+   return dispatch => {
+    Promise.all(players.map(player =>
+        fetch('http://localhost:4444/api/v3/u/' + player.battletag.replace("#", "-") + '/blob')
+        .then(resp => resp.json())
+    )).then(jsonArray => {
+        players.forEach(function(player, index){
+          dispatch(receivePlayerInfo(player, jsonArray[index]))
+        })
+    })
   }
 }
 

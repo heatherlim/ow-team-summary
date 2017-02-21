@@ -5,6 +5,7 @@
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.0",
+    "babel-polyfill": "^6.23.0",
     "react-scripts": "0.9.0"
   },
   "dependencies": {
