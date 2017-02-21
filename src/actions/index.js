@@ -23,11 +23,19 @@ function receivePlayerInfo(player, json) {
   }
 }
 
+ function handleErrorMessage(err) {
+  return {
+    type: 'HANDLE_ERROR_MESSAGE',
+    error: err
+  }
+}
+
  export function fetchTeamInfo(players) {
    return dispatch => {
     Promise.all(players.map(player =>
         fetch('http://localhost:4444/api/v3/u/' + player.battletag.replace("#", "-") + '/blob')
         .then(resp => resp.json())
+        .catch(err => dispatch(handleErrorMessage(err)))
     )).then(jsonArray => {
         players.forEach(function(player, index){
           dispatch(receivePlayerInfo(player, jsonArray[index]))
