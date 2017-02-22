@@ -13,6 +13,7 @@ const PlayerList = ({players, playerList, errors, handleDeletePlayer, handleSubm
       </div>
       <button
         onClick={() => handleSubmitTeam(players)}
+        disabled={!(players.length > 1)}
       >
         Submit
       </button>
@@ -22,11 +23,11 @@ const PlayerList = ({players, playerList, errors, handleDeletePlayer, handleSubm
   )
 }
 
-// PlayerList.propTypes = {
-//   players: PropTypes.arrayOf(PropTypes.shape({
-//     battletag: PropTypes.string.isRequired
-//   }).isRequired).isRequired,
-//   handleSubmitTeam: PropTypes.func.isRequired
-// }
+PlayerList.propTypes = {
+  players: PropTypes.arrayOf(PropTypes.shape({
+    battletag: PropTypes.string.isRequired
+  }).isRequired).isRequired,
+  handleSubmitTeam: PropTypes.func.isRequired
+}
 
 export default PlayerList
