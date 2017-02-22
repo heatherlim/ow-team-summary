@@ -17,7 +17,7 @@ const PlayerList = ({players, playersResponse, errors, handleDeletePlayer, handl
       >
         Submit
       </button>
-      {playersResponse.isFetching ? "LOADING..... PUT SPINNER HERE" : "BIBIIIBI"}
+      {playersResponse.isFetching ? "LOADING..... PUT SPINNER HERE" : ""}
       {players.length === playersResponse.players.length && players.length !== 0 && errors.length === 0 ? <TeamSummaryContainer /> : ""}
       {errors.length !== 0 ? "Error Component Here" : ""}
     </div>
