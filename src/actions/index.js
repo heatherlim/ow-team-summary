@@ -15,6 +15,13 @@ export const deletePlayer = (battletag) => {
   }
 }
 
+function requestPlayerInfo(players) {
+  return {
+    type: 'REQUEST_PLAYER_INFO',
+    players
+  }
+}
+
 function receivePlayerInfo(player, json) {
   return {
     type: 'RECEIVE_PLAYER_INFO',
@@ -32,7 +39,7 @@ function receivePlayerInfo(player, json) {
 
  export function fetchTeamInfo(players) {
    return dispatch => {
-     // Requesting posts... isFetching will be true here
+     dispatch(requestPlayerInfo(players))
     Promise.all(players.map(player =>
         fetch('http://localhost:4444/api/v3/u/' + player.battletag.replace("#", "-") + '/blob')
         .then(resp => resp.json())
@@ -40,7 +47,6 @@ function receivePlayerInfo(player, json) {
     )).then(jsonArray => {
         players.forEach(function(player, index){
           dispatch(receivePlayerInfo(player, jsonArray[index]))
-          // Dispatch action that changes isFetching to false? Receive player info should set it to false?
         })
     })
   }
