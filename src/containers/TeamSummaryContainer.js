@@ -3,7 +3,7 @@ import TeamSummary from '../components/TeamSummary'
 
 const mapStateToProps = (state) => {
   return {
-    playerList: state.playersResponse
+    playersResponse: state.playersResponse
   }
 }
 

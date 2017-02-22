@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import TeamSummaryContainer from '../containers/TeamSummaryContainer'
 
-const PlayerList = ({players, playerList, errors, handleDeletePlayer, handleSubmitTeam}) => {
+const PlayerList = ({players, playersResponse, errors, handleDeletePlayer, handleSubmitTeam}) => {
   return  (
     <div>
       <div>
@@ -17,7 +17,7 @@ const PlayerList = ({players, playerList, errors, handleDeletePlayer, handleSubm
       >
         Submit
       </button>
-      {players.length === playerList.length && players.length !== 0 && errors.length === 0 ? <TeamSummaryContainer /> : ""}
+      {players.length === playersResponse.players.length && players.length !== 0 && errors.length === 0 ? <TeamSummaryContainer /> : ""}
       {errors.length !== 0 ? "Error Component Here" : ""}
     </div>
   )

@@ -5,7 +5,7 @@ import { fetchTeamInfo, deletePlayer } from '../actions'
 const mapStateToProps = (state) => {
   return {
     players: state.players,
-    playerList: state.playersResponse,
+    playersResponse: state.playersResponse,
     errors: state.errors
   }
 }

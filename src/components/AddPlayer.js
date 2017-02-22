@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
-const AddPlayer = ( {dispatch, handleAddPlayer} ) => {
+const AddPlayer = ( {dispatch, handleAddPlayer, players} ) => {
   let input
   return (
     <div>
@@ -16,7 +16,7 @@ const AddPlayer = ( {dispatch, handleAddPlayer} ) => {
         <input ref={node => {
           input = node
         }} />
-        <button type="submit">
+        <button type="submit" disabled={players.length >= 6}>
           Add Player
         </button>
       </form>

@@ -1,13 +1,11 @@
-const playersResponse = (state = [], action) => {
+const playersResponse = (state = {
+  players: []
+}, action) => {
   switch(action.type) {
     case 'RECEIVE_PLAYER_INFO':
-      return [
-        ...state,
-        Object.assign({}, {
-        comprank: action.comprank, 
-        battletag: action.player.battletag
-        })
-      ]
+      let newPlayers = [...state.players]
+      newPlayers.push({comprank: action.comprank,battletag: action.player.battletag})
+      return Object.assign({},state,{players: newPlayers})
     default:
       return state
   }
