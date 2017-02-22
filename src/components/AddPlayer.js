@@ -1,10 +1,7 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { addPlayer } from '../actions'
+import React, { PropTypes } from 'react'
 
-let AddPlayer = ( {dispatch} ) => {
+const AddPlayer = ( {dispatch, handleAddPlayer} ) => {
   let input
-  
   return (
     <div>
       <form onSubmit={e => {
@@ -12,7 +9,8 @@ let AddPlayer = ( {dispatch} ) => {
         if (!input.value.trim()) {
           return
         }
-        dispatch(addPlayer(input.value))
+        // dispatch(addPlayer(input.value))
+        handleAddPlayer(input.value)
         input.value = ''
       }}>
         <input ref={node => {
@@ -25,5 +23,5 @@ let AddPlayer = ( {dispatch} ) => {
     </div>
   )
 }
-AddPlayer = connect()(AddPlayer)
+
 export default AddPlayer

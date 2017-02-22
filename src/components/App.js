@@ -1,12 +1,12 @@
 import React from 'react'
-import AddPlayer from '../containers/AddPlayer'
+import AddPlayerContainer from '../containers/AddPlayerContainer'
 import PlayerListContainer from '../containers/PlayerListContainer'
 
 
 const App = () => (
   <div>
     Players
-    <AddPlayer />
+    <AddPlayerContainer />
     <PlayerListContainer />
   </div>
 )
