@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import PlayerList from '../components/PlayerList'
-import { fetchTeamInfo } from '../actions'
+import { fetchTeamInfo, deletePlayer } from '../actions'
 
 const mapStateToProps = (state) => {
   return {
@@ -14,6 +14,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     handleSubmitTeam: (players) => {
       dispatch(fetchTeamInfo(players))
+    },
+    handleDeletePlayer: (battletag) => {
+      dispatch(deletePlayer(battletag))
     }
   }
 }

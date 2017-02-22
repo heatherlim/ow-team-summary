@@ -16,6 +16,12 @@ const players = (state = [], action) => {
         ...state,
         player(undefined, action)
       ]
+    case 'DELETE_PLAYER':
+      const foundPlayer = state.find(player => player.battletag === action.battletag)
+      const copyState = [...state]
+      const index = copyState.indexOf(foundPlayer)
+      copyState.splice(index,1)
+      return copyState
     case 'RECEIVE_PLAYER_INFOS':
       return [  
         ...state,

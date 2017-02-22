@@ -1,13 +1,13 @@
 import React, { PropTypes } from 'react'
 import TeamSummaryContainer from '../containers/TeamSummaryContainer'
 
-const PlayerList = ({players, playerList, errors, handleSubmitTeam}) => {
+const PlayerList = ({players, playerList, errors, handleDeletePlayer, handleSubmitTeam}) => {
   return  (
     <div>
       <div>
         {players.map((player, index) => 
           <div key={index}>
-            {player.battletag}
+            {player.battletag} <button onClick={() => handleDeletePlayer(player.battletag)}>X</button>
           </div>
         )}
       </div>

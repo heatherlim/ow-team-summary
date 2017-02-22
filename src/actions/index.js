@@ -8,12 +8,19 @@ export const addPlayer = (battletag) => {
   }
 }
 
-export const submitTeamAction = (players) => {
+export const deletePlayer = (battletag) => {
   return {
-    type: 'SUBMIT_TEAM_ACTION',
-    players
+    type: 'DELETE_PLAYER',
+    battletag
   }
 }
+// 
+// export const submitTeamAction = (players) => {
+//   return {
+//     type: 'SUBMIT_TEAM_ACTION',
+//     players
+//   }
+// }
 
 function receivePlayerInfo(player, json) {
   return {
