@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react'
-import TeamSummaryContainer from '../containers/TeamSummaryContainer'
 
 const PlayerList = ({players, playersResponse, errors, handleDeletePlayer, handleSubmitTeam}) => {
   return  (
@@ -18,7 +17,6 @@ const PlayerList = ({players, playersResponse, errors, handleDeletePlayer, handl
         Submit
       </button>
       {playersResponse.isFetching ? "LOADING..... PUT SPINNER HERE" : ""}
-      {players.length === playersResponse.players.length && players.length !== 0 && errors.length === 0 ? <TeamSummaryContainer /> : ""}
       {errors.length !== 0 ? "Error Component Here" : ""}
     </div>
   )

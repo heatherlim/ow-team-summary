@@ -8,7 +8,6 @@ import App from './components/App'
 import players from './reducers/players'
 import playersResponse from './reducers/playersResponse'
 import errors from './reducers/errors'
-
 import { Router, Route, browserHistory } from 'react-router';
 import TeamSummary from './components/TeamSummary';
 
