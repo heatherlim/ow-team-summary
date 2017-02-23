@@ -1,8 +1,8 @@
 import React from 'react'
 
 const getAverage = (playerList) => {
-  var sum = playerList.reduce((p,c) => p.comprank + c.comprank)
-  return "Average SR: " + sum/playerList.length
+  var sum = playerList.reduce((acc, sum) => acc + sum["comprank"], 0)
+  return "Average SR: " + Math.floor(sum/playerList.length)
 }
 
 const TeamSummary = ({playersResponse, handleClearPlayersResponse}) => {
