@@ -5,6 +5,13 @@ const getAverage = (playerList) => {
   return "Average SR: " + Math.floor(sum/playerList.length)
 }
 
+const getRange = (playerList) => {
+  var compScoreArray = playerList.map(player => player.comprank)
+  var min = Math.min(...compScoreArray)
+  var max = Math.max(...compScoreArray)
+  return "SR Range: " + min + " - " + max
+}
+
 const TeamSummary = ({playersResponse, handleClearPlayersResponse}) => {
   return(
     <div>
@@ -17,6 +24,7 @@ const TeamSummary = ({playersResponse, handleClearPlayersResponse}) => {
         )}
       </div>
       <div>
+      {getRange(playersResponse.players)} | 
       {playersResponse.players.length > 0 ?  getAverage(playersResponse.players): ""}
       </div>
       <button
