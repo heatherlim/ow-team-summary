@@ -11,6 +11,11 @@ const playersResponse = (state = {
       let newPlayers = [...state.players]
       newPlayers.push({comprank: action.comprank,battletag: action.player.battletag})
       return Object.assign({},state,{isFetching: false, players: newPlayers})
+    case 'HANDLE_CLEAR_PLAYERS_RESPONSE':
+      return Object.assign({}, state, {
+        isFetching: false,
+        players: []
+      })
     default:
       return state
   }

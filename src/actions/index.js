@@ -30,10 +30,16 @@ function receivePlayerInfo(player, json) {
   }
 }
 
- function handleErrorMessage(err) {
+function handleErrorMessage(err) {
   return {
     type: 'HANDLE_ERROR_MESSAGE',
     error: err
+  }
+}
+
+export const handleClearPlayersResponse = () => {
+  return {
+    type: 'HANDLE_CLEAR_PLAYERS_RESPONSE'
   }
 }
 

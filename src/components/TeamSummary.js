@@ -5,7 +5,7 @@ const getAverage = (playerList) => {
   return "Average SR: " + sum/playerList.length
 }
 
-const TeamSummary = ({playersResponse}) => {
+const TeamSummary = ({playersResponse, handleClearPlayersResponse}) => {
   return(
     <div>
       Team Summary
@@ -19,6 +19,11 @@ const TeamSummary = ({playersResponse}) => {
       <div>
       {playersResponse.players.length > 0 ?  getAverage(playersResponse.players): ""}
       </div>
+      <button
+        onClick={() => handleClearPlayersResponse()}
+      >
+        Go Back
+      </button>
     </div>
   )
 }
