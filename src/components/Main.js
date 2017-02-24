@@ -2,6 +2,7 @@ import React from 'react'
 import AddPlayerContainer from '../containers/AddPlayerContainer'
 import PlayerListContainer from '../containers/PlayerListContainer'
 import TeamSummaryContainer from '../containers/TeamSummaryContainer'
+import ErrorContainer from '../containers/ErrorContainer'
 
 const Main = ({playersResponse, players, errors}) => {
   return (
@@ -14,7 +15,7 @@ const Main = ({playersResponse, players, errors}) => {
        : ""}
        
        {playersResponse.isFetching ? "LOADING..... PUT SPINNER HERE" : ""}
-       {errors.length !== 0 ? "Error Component Here" : ""}
+       {errors.length !== 0 ? <ErrorContainer /> : ""}
       
         {players.length === playersResponse.players.length && players.length !== 0 && errors.length === 0 ? <TeamSummaryContainer /> : ""}
     </div>

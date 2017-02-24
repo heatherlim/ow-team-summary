@@ -1,6 +1,8 @@
 import 'babel-polyfill'
 import fetch from 'isomorphic-fetch'
 
+
+
 export const addPlayer = (battletag) => {
   return {
     type: 'ADD_PLAYER',
@@ -8,10 +10,23 @@ export const addPlayer = (battletag) => {
   }
 }
 
+export const displayAddPlayerError = (errorMessage) => {
+  return {
+    type: 'DISPLAY_ADD_PLAYER_ERROR',
+    errorMessage
+  }
+}
+
 export const deletePlayer = (battletag) => {
   return {
     type: 'DELETE_PLAYER',
     battletag
+  }
+}
+
+export const handleClearError = () => {
+  return {
+    type: 'CLEAR_ERRORS'
   }
 }
 

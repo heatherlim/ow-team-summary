@@ -9,7 +9,6 @@ const AddPlayer = ( {dispatch, handleAddPlayer, players} ) => {
         if (!input.value.trim()) {
           return
         }
-        // dispatch(addPlayer(input.value))
         handleAddPlayer(input.value)
         input.value = ''
       }}>

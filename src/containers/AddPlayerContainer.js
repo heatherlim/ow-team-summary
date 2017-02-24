@@ -1,6 +1,33 @@
 import { connect } from 'react-redux'
 import AddPlayer from '../components/AddPlayer'
-import { addPlayer } from '../actions'
+import { addPlayer, displayAddPlayerError, handleClearError } from '../actions'
+
+function isNumber(n) { return /^-?[\d.]+(?:e-?\d+)?$/.test(n); } 
+
+function poundValid(string) {
+  var count = 0
+  var array = string.split("")
+  for(var i = 0; i < array.length; ++i){
+    if(array[i] === '#')
+      count++
+  }
+  if (count > 0) {
+    return true
+  } 
+}
+
+function errorMessage(battletag) {
+  if(poundValid(battletag)){
+    var battleTagNumber = battletag.match(/#([^ ]*)/)[1]
+    if(isNumber(battleTagNumber)) {
+      return
+    } else {
+      return "BattleTag ID has to be a number. Ex. GenjiSucks#1234"
+    }
+  } else {
+      return "Please format with full BattleTag and number. Ex. GenjiSucks#1234"
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +38,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleAddPlayer: (battletag) => {
-      dispatch(addPlayer(battletag))
+      if(errorMessage(battletag)) {
+        dispatch(displayAddPlayerError(errorMessage(battletag)))
+      } else {
+        dispatch(handleClearError())
+        dispatch(addPlayer(battletag))
+      }
     }
   }
 }
