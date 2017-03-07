@@ -41,7 +41,7 @@ function receivePlayerInfo(player, json) {
   return {
     type: 'RECEIVE_PLAYER_INFO',
     player,
-    comprank: json.us.stats.competitive.overall_stats.comprank
+    comprank: json.competitive_rank
   }
 }
 
@@ -62,7 +62,7 @@ export const handleClearPlayersResponse = () => {
    return dispatch => {
      dispatch(requestPlayerInfo(players))
     Promise.all(players.map(player =>
-        fetch('http://localhost:4444/api/v3/u/' + player.battletag.replace("#", "-") + '/blob')
+        fetch('http://localhost:9393/api/' + player.battletag.replace("#", "-"))
         .then(resp => resp.json())
         .catch(err => dispatch(handleErrorMessage(err)))
     )).then(jsonArray => {
