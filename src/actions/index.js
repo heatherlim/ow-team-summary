@@ -45,10 +45,10 @@ function receivePlayerInfo(player, json) {
   }
 }
 
-function handleErrorMessage(err) {
+function handleErrorMessage(player) {
   return {
     type: 'HANDLE_ERROR_MESSAGE',
-    error: err
+    error: player
   }
 }
 
@@ -64,7 +64,7 @@ export const handleClearPlayersResponse = () => {
     Promise.all(players.map(player =>
         fetch('http://localhost:9393/api/' + player.battletag.replace("#", "-"))
         .then(resp => resp.json())
-        .catch(err => dispatch(handleErrorMessage(err)))
+        .catch(err => dispatch(handleErrorMessage(player)))
     )).then(jsonArray => {
         players.forEach(function(player, index){
           dispatch(receivePlayerInfo(player, jsonArray[index]))
